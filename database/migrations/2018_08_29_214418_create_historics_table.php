@@ -6,26 +6,36 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateHistoricsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('historics', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
-    }
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('historics', function (Blueprint $table) {
+			$table->increments('id');
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('historics');
-    }
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->enum('type', ['I', 'O', 'T']);
+			$table->double('amount', 10, 2);
+			$table->double('total_before', 10, 2);
+			$table->double('total_after', 10, 2);
+			//nullable preenchimento opcional
+			$table->integer('user_id_transaction')->nullable();
+			$table->date('date');
+			$table->timestamps();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('historics');
+	}
 }
