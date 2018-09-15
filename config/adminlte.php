@@ -108,7 +108,7 @@ return [
 	*/
 
 	'menu' => [
-		'Menu',
+		// 'Menu',
 		// [
 		// 	'text' => 'Blog',
 		// 	'url'  => 'admin/blog',
@@ -116,9 +116,25 @@ return [
 		// 	// 'can'  => 'manage-blog',
 		// ],
 		[
-			'text'        => 'Home',
-			'url'         => 'admin',
-			'icon'        => 'home',
+			'text'		=> 'Dashboard',
+			'url'		=> 'admin',
+			'icon'		=> 'dashboard',
+		],
+		[
+			'text'		=> 'Financeiro',
+			'icon'		=> 'money',
+			'submenu'	=> [
+				[
+					'text' 	=> 'Saldo',
+					'url'	=> 'admin/balance',
+					'icon'	=> 'credit-card-alt'
+				],
+				[
+					'text' 	=> 'Historico',
+					'url'	=> 'admin/historic',
+					'icon'	=> 'history'
+				]
+			]
 		]
 		// 'ACCOUNT SETTINGS',
 		// [
