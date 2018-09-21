@@ -2,6 +2,8 @@
 
 // Criando um grupo para analisar se esta dentro dos conformes para acessar essa barra
 $this->group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function(){
+	$this->post('balance/deposit', 'BalanceController@depositStore')->name('deposit.store');
+	$this->get('balance/deposit', 'BalanceController@deposit')->name('balance.deposit');
 
 	// Route::get('admin, 'Admin\AdminController@index');
 	$this->get('/', 'AdminController@index')->name('admin.home');

@@ -21,6 +21,15 @@ class UsersTableSeeder extends Seeder
 			// passando a senha em bcrypt um criptografia do laravel
 			'password'	=> bcrypt('sinaneva')
 		]);
+
+		User::create([
+			// passando o nome para o user em forma de array
+			'name'		=> 'Mel',
+			// passando o email
+			'email'		=> 'mel@live.com',
+			// passando a senha em bcrypt um criptografia do laravel
+			'password'	=> bcrypt('sinaneva')
+		]);
 	}
 }
 

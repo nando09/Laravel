@@ -23,7 +23,7 @@ class CreateBalancesTable extends Migration
 			//Definindo como chave estrangeira da coluna user_id, referente o id da tabale users, quando deletar um id automaticamento deletar o user_id 
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			// Criando uma coluna para pegar o saldo do usuario, um valor double com 10 numero e 2 depois do virgula
-			$table->double('amount', 10,2);
+			$table->double('amount', 10,2)->default(0);
 		});
 	}
 
