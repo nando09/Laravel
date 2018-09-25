@@ -18,6 +18,7 @@
 			<h3>Fazer recarga</h3>
 		</div>
 		<div class="box-body">
+			@include('admin.includes.alerts')
 			<form method="post" action="{{ route('deposit.store') }}">
 				{!! csrf_field() !!}
 				<div class="form-group">
