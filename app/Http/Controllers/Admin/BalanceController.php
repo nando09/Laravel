@@ -27,7 +27,28 @@ class BalanceController extends Controller
 		// dd($request->value);
 		// $balance->deposit($request->value);
 		$balance = auth()->user()->balance()->firstOrCreate([]);
-		$response = $balance->deposit($request->recarga);
+		$response = $balance->deposit($request->valor);
+
+		if ($response['sucess'])
+			return redirect()
+				->route('admin.balance')
+				->with('sucess', $response['message']);
+
+		return redirect()
+			->back()
+			->with('error', $response['message']);
+	}
+
+	public function withdraw(){
+		return view('admin.balance.withdraw', compact('amount'));
+	}
+
+	public function withdrawStore(MoneyValidationFormRequest $request){
+		// dd($request->all());
+		// dd($request->value);
+		// $balance->deposit($request->value);
+		$balance = auth()->user()->balance()->firstOrCreate([]);
+		$response = $balance->withdraw($request->valor);
 
 		if ($response['sucess'])
 			return redirect()
